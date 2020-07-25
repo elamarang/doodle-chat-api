@@ -8,6 +8,8 @@ const update = require('./controllers/update');
 const msgs = require('./controllers/msgs');
 const sendmsg = require('./controllers/sendmsg');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+
 const db=knex({
     client: 'pg',
     connection: {
@@ -21,6 +23,8 @@ const db=knex({
 const app =express();
 app.use (express.json());
 app.use(cors());
+
+app.get('/',(req,res)=>{res.json('it is working')});
 
 app.get('/users',(req,res)=>{users.handleUsers(req,res,db)});
 
