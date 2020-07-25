@@ -34,6 +34,6 @@ app.post('/remove',(req,res)=>{remove.handleDelete(req,res,db)});
 
 app.post('/update',(req,res)=>{update.handleUpdate(req,res,db)});
 
-app.listen(3000,()=>{
-    console.log('app is running');
+app.listen(process.env.PORT||3000,()=>{
+    console.log(`app is running ${process.env.PORT}`);
 })
